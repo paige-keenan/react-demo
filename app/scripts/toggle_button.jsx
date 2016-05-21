@@ -1,7 +1,10 @@
+// Basic toggle button component
+// =============================
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Menu extends React.Component {
+class Toggle_Button extends React.Component {
 
   // Set Inital State and Properties here
   constructor(props) {
@@ -14,7 +17,6 @@ class Menu extends React.Component {
     event.preventDefault();
     this.setState({show_menu: !this.state.show_menu});
   }
-
 
   // Menu Button Renderer
   render() {
@@ -31,6 +33,6 @@ class Menu extends React.Component {
 }
 
 ReactDOM.render(
-  <Menu/>, 
-  document.getElementById('menu')
+  <Toggle_Button/>, 
+  document.getElementById('menuButton')
 );
