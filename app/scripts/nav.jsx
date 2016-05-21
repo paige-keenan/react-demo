@@ -4,18 +4,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+  const nav_data = { 
+    links: [
+      {title: "Link One", url: "#one"},
+      {title: "Link Two", url: "#two"},
+      {title: "Link Three", url: "#three"},
+      {title: "Link Four", url: "#four"},
+      {title: "Link Five", url: "#five"}
+    ]
+  }
 
-const nav_data = { 
-  links: [
-    {title: "Link One", url: "#one"},
-    {title: "Link Two", url: "#two"},
-    {title: "Link Three", url: "#three"},
-    {title: "Link Four", url: "#four"},
-    {title: "Link Five", url: "#five"}
-  ]
-}
-
-class Nav extends React.Component {
+export default class Nav extends React.Component {
 
   // Render Links
   render_nav_list_item(links) {
@@ -42,7 +41,4 @@ class Nav extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Nav data={nav_data}/>, 
-  document.getElementById('nav')
-);
+module.exports = Nav;
