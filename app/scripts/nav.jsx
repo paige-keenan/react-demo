@@ -4,16 +4,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
+const nav_data = { 
+  links: [
+    {title: "Link One", url: "#one"},
+    {title: "Link Two", url: "#two"},
+    {title: "Link Three", url: "#three"},
+    {title: "Link Four", url: "#four"},
+    {title: "Link Five", url: "#five"}
+  ]
+}
+
 class Nav extends React.Component {
 
-  // Menu Button Renderer
+  // Render Links
+  render_nav_list_item(links) {
+    return links.map(function(link_item, i){
+      return (
+        <li key={i}>
+          <a href={link_item.url}>
+            {link_item.title}
+          </a>
+        </li> 
+      )     
+    })
+  }  
+
+  // Navigation Renderer
   render() {
     return (
       <nav>
         <ul>
-          <li>one</li>
-          <li>two</li>
-          <li>three</li>
+          {this.render_nav_list_item(this.props.data.links)}
         </ul>
       </nav> 
     );
@@ -21,6 +43,6 @@ class Nav extends React.Component {
 }
 
 ReactDOM.render(
-  <Nav/>, 
+  <Nav data={nav_data}/>, 
   document.getElementById('nav')
 );

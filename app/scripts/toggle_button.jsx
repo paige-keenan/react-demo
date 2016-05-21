@@ -21,13 +21,11 @@ class Toggle_Button extends React.Component {
   // Menu Button Renderer
   render() {
     return (
-      <header>
-        <button 
-          className={this.state.show_menu ? 'isOpen' : ''}     
-          onClick={this.toggle_menu.bind(this)}>
-          Menu
-        </button>
-      </header> 
+      <button 
+        className={this.state.show_menu ? 'isOpen' : ''}     
+        onClick={this.toggle_menu.bind(this)}>
+        Menu
+      </button>
     );
   }
 }
