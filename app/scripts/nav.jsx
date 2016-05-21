@@ -26,8 +26,8 @@ class Nav extends React.Component {
             {link_item.title}
           </a>
         </li> 
-      )     
-    })
+      );     
+    });
   }  
 
   // Navigation Renderer
