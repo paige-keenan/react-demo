@@ -17,8 +17,15 @@
 	padding: 0;
 }
 
+$body-color: #F1E8DB;
+$nav-background: #D0E3EF;
+$button-color: #1059DE;
+$primary-color: #fff;
+$secondary-color: #002465;
+$accent-color: #C1D8E6;
+
 body {
-	background: #F1E8DB;
+	background: $body-color;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	@include No-Margin-Or-Padding;
@@ -51,13 +58,13 @@ header {
 	button {
 		border: 0;
 		width: 100%;
-		background: #1059DE;
+		background: $button-color;
 		height: 10vh;
 		position: absolute;
 		top: 0;
 		z-index: 2;
 		font-size: 20px;
-		color: #fff;
+		color: $primary-color;
 		@include Main-Font;
 
 		@media screen and (min-width: 768px) {
@@ -77,7 +84,7 @@ header {
 	nav {
 		height: 100vh;
 		width: 100%;
-		background: #D0E3EF;
+		background: $nav-background;
 		position: absolute;
 		top: 0;
 		z-index: 1;
@@ -87,7 +94,7 @@ header {
 			height: auto;
 			background: rgba(208, 227, 239, 0.55);
 			transform: translateY(0);
-			border-bottom: 1px solid #C1D8E6;
+			border-bottom: 1px solid $accent-color;
 		}
 
 		&[data-menu-state='isOpen'] {
@@ -106,7 +113,7 @@ header {
 		}	
 
 		li {
-			border-bottom: 1px solid #C1D8E6;
+			border-bottom: 1px solid $accent-color;
 
 			@media screen and (min-width: 768px) {
 				display: inline-block;
@@ -117,7 +124,7 @@ header {
 				padding: 20px 0;
 				display: block;
 				text-decoration: none;
-				color: #002465;
+				color: $secondary-color;
 				font-size: 20px;
 				position: relative;
 				@include Secondary-Font;
@@ -131,7 +138,7 @@ header {
 				}
 
 				&:hover {
-					background: #C1D8E6;
+					background: $accent-color;
 					transition: .15s ease-in;
 				}
 			}
