@@ -23,7 +23,7 @@ export default class Nav extends React.Component {
   render() {
     return (
       <nav
-        className={this.props.currentState ? 'isOpen' : ''}>
+        data-menu-state={this.props.currentState ? 'isOpen' : 'isClosed'}>
         <ul>
           {this.render_nav_list_item(this.props.data.links)}
         </ul>

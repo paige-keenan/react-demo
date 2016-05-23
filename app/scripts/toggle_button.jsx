@@ -11,7 +11,7 @@ export default class Toggle_Button extends React.Component {
     return (
       <button 
         onClick={this.props.clickEvent}
-        className={this.props.currentState ? 'isOpen' : ''}>
+        data-menu-state={this.props.currentState ? 'isOpen' : 'isClosed'}>
           Menu
       </button>
     );
