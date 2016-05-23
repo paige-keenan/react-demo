@@ -1,4 +1,4 @@
-// Conten
+// Content
 // =============================
 
 import React from 'react';
