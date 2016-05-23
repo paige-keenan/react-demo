@@ -119,14 +119,20 @@ header {
 				text-decoration: none;
 				color: #002465;
 				font-size: 20px;
+				position: relative;
 				@include Secondary-Font;
+				transition: .15s ease-out;
 
 				@media screen and (min-width: 768px) {
 					padding: 20px;
+					border-top-right-radius: 20px;
+    				border-top-left-radius: 20px;
+    				margin-top: 10px;
 				}
 
 				&:hover {
 					background: #C1D8E6;
+					transition: .15s ease-in;
 				}
 			}
 		}
