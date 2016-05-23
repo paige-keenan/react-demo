@@ -9,11 +9,11 @@ import Content from './content';
 
 const nav_data = { 
   links: [
-    {title: "Link One", url: "#one"},
-    {title: "Link Two", url: "#two"},
-    {title: "Link Three", url: "#three"},
-    {title: "Link Four", url: "#four"},
-    {title: "Link Five", url: "#five"}
+    {title: "Link One", url: "#one", hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav One', subNavUrl: '#subNavOne'}, {subNavTitle: 'Subnav Two', subNavUrl: '#subNavTwo'}]},
+    {title: "Link Two", url: "#two", hasSubMenu: false},
+    {title: "Link Three", url: "#three", hasSubMenu: false},
+    {title: "Link Four", url: "#four", hasSubMenu: false},
+    {title: "Link Five", url: "#five", hasSubMenu: false}
   ]
 }
 
