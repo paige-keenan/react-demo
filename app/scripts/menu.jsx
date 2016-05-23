@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Nav from './nav';
 import Toggle_Button from './toggle_button';
+import Content from './content';
 
 const nav_data = { 
   links: [
@@ -45,6 +46,7 @@ export default class Menu extends React.Component {
         <Nav 
           data={nav_data}
           currentState={this.state.show_menu} />        
+        <Content />  
       </header>
     );
   }
