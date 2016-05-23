@@ -53,5 +53,5 @@ export default class Menu extends React.Component {
 
 ReactDOM.render(
   <Menu />, 
-  document.body
+  document.getElementById('app')
 );
