@@ -4,8 +4,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-
 export default class Nav extends React.Component {
 
   // Render Links
@@ -24,7 +22,8 @@ export default class Nav extends React.Component {
   // Navigation Renderer
   render() {
     return (
-      <nav>
+      <nav
+        className={this.props.currentState ? 'isOpen' : ''}>
         <ul>
           {this.render_nav_list_item(this.props.data.links)}
         </ul>
@@ -32,5 +31,3 @@ export default class Nav extends React.Component {
     );
   }
 }
-
-module.exports = Nav;
