@@ -1,5 +1,5 @@
 {
-  "name": "react-boiler-plate",
+  "name": "react-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paige-keenan/react-boiler-plate.git"
+    "url": "git+https://github.com/paige-keenan/react-demo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/paige-keenan/react-boiler-plate/issues"
+    "url": "https://github.com/paige-keenan/react-demo"
   },
-  "homepage": "https://github.com/paige-keenan/react-boiler-plate#readme",
+  "homepage": "https://github.com/paige-keenan/react-demo#readme",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
