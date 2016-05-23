@@ -1,7 +1,23 @@
 // All Styles
 // =============================
 
+@mixin Main-Font {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	font-size: 20px;
+	color: #fff;
+	letter-spacing: 2px	
+}
+
+@mixin Secondary-Font {
+	font-family: 'Inconsolata', sans-serif;
+	color: #002465;
+	font-size: 20px;
+    letter-spacing: 1px;
+}
+
 body {
+	background: #F1E8DB;
 	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
@@ -13,12 +29,59 @@ header {
 	width: 100%;
 	height: 100vh;
 
-	nav {
-		height: 100%;
+	button {
+		border: 0;
 		width: 100%;
-		background: pink;
-		transform: translateY(-100%);
+		background: #1059DE;
+		height: 10vh;
 		position: absolute;
 		top: 0;
+		z-index: 1;
+		@include Main-Font;
+
+		&[data-menu-state='isOpen'] {
+			transform: translateY(90vh);
+			transition: .3s ease-in;
+		}
+
+		&[data-menu-state='isClosed'] {
+			transition: .15s ease-out;
+		}
+	}
+
+	nav {
+		height: 100vh;
+		width: 100%;
+		background: #D0E3EF;
+		position: absolute;
+		top: 0;
+		transform: translateY(-100%);
+
+		&[data-menu-state='isOpen'] {
+			transform: translateY(0);
+			transition: .3s ease-in;
+		}		
+
+		&[data-menu-state='isClosed'] {
+			transition: .15s ease-out;
+		}	
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			text-align: center;
+		}	
+
+		li {
+			border-bottom: 1px solid #C1D8E6;
+
+			a {
+				padding: 20px 0;
+				display: block;
+				text-decoration: none;
+				@include Secondary-Font;
+			}
+		}
 	}
 }
