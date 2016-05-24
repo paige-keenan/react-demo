@@ -9,11 +9,11 @@ import Content       from './content';
 
 const nav_data = { 
   links: [
-    {title: "Link One",   url: "#one",   hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 1.1', subNavUrl: '#subNav1.1'}, {subNavTitle: 'Subnav 1.2', subNavUrl: '#subNav1.2'}]},
-    {title: "Link Two",   url: "#two",   hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 2.1', subNavUrl: '#subNav2.1'}, {subNavTitle: 'Subnav 2.2', subNavUrl: '#subNav2.2'}]},
-    {title: "Link Three", url: "#three", hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 3.1', subNavUrl: '#subNav3.1'}, {subNavTitle: 'Subnav 3.2', subNavUrl: '#subNav3.2'}]},
-    {title: "Link Four",  url: "#four",  hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 4.1', subNavUrl: '#subNav4.1'}, {subNavTitle: 'Subnav 4.2', subNavUrl: '#subNav4.2'}]},
-    {title: "Link Five",  url: "#five",  hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 5.1', subNavUrl: '#subNav5.1'}, {subNavTitle: 'Subnav 5.2', subNavUrl: '#subNav5.2'}]}
+    {title: "Link One",   url: "#one",   hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 1.1', subNavUrl: '#subNav1.1'}, {subNavTitle: 'Subnav 1.2', subNavUrl: '#subNav1.2'}]},
+    {title: "Link Two",   url: "#two",   hasSubMenu: false, subNavLinks: []},
+    {title: "Link Three", url: "#three", hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 3.1', subNavUrl: '#subNav3.1'}, {subNavTitle: 'Subnav 3.2', subNavUrl: '#subNav3.2'}]},
+    {title: "Link Four",  url: "#four",  hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 4.1', subNavUrl: '#subNav4.1'}, {subNavTitle: 'Subnav 4.2', subNavUrl: '#subNav4.2'}]},
+    {title: "Link Five",  url: "#five",  hasSubMenu: false, subNavLinks: []}
   ]
 }
 
