@@ -24,7 +24,9 @@ export default class Nav extends React.Component {
       }
 
       return (
-        <li key={i}>
+        <li 
+          key={i}
+          data-has-sub-nav={link_item.hasSubMenu ? true : false}>
           <a href={link_item.url}>
             {link_item.title}
           </a>
