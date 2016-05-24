@@ -8,16 +8,19 @@ export default class Nav extends React.Component {
   // Render Links
   render_nav_list_item(links) {
     return links.map(function(link_item, i) {
-      // Conditional to check if `hasSubMenu` is TRUE in data    
       var Sub_Nav = undefined;
-
+      var sub_links = undefined;
+      // Conditional to check if `hasSubMenu` is TRUE in data    
       if (link_item.hasSubMenu) {
-        link_item.subNavLinks.map(function(sub_nav_link, i) {
-          Sub_Nav = 
-            <ul key={i}>
-              <li key={i}>{sub_nav_link.subNavTitle}</li>
-            </ul>  
+        sub_links = link_item.subNavLinks.map(function(sub_nav_link, i) {
+          return  <li key={i}>
+                    <a href={sub_nav_link.subNavUrl}>
+                      {sub_nav_link.subNavTitle}
+                    </a>
+                  </li>
         });
+        // Append the `sub_links` into this `<ul>` and then append to return below
+        Sub_Nav = <ul>{sub_links}</ul>
       }
 
       return (
