@@ -1,19 +1,19 @@
 // Menu Component
 // =============================
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Nav from './nav';
+import React         from 'react';
+import ReactDOM      from 'react-dom';
+import Nav           from './nav';
 import Toggle_Button from './toggle_button';
-import Content from './content';
+import Content       from './content';
 
 const nav_data = { 
   links: [
-    {title: "Link One", url: "#one", hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav One', subNavUrl: '#subNavOne'}, {subNavTitle: 'Subnav Two', subNavUrl: '#subNavTwo'}]},
-    {title: "Link Two", url: "#two", hasSubMenu: false, subNavLinks: []},
-    {title: "Link Three", url: "#three", hasSubMenu: false, subNavLinks: []},
-    {title: "Link Four", url: "#four", hasSubMenu: false, subNavLinks: []},
-    {title: "Link Five", url: "#five", hasSubMenu: false, subNavLinks: []}
+    {title: "Link One",   url: "#one",   hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 1.1', subNavUrl: '#subNav1.1'}, {subNavTitle: 'Subnav 1.2', subNavUrl: '#subNav1.2'}]},
+    {title: "Link Two",   url: "#two",   hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 2.1', subNavUrl: '#subNav2.1'}, {subNavTitle: 'Subnav 2.2', subNavUrl: '#subNav2.2'}]},
+    {title: "Link Three", url: "#three", hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 3.1', subNavUrl: '#subNav3.1'}, {subNavTitle: 'Subnav 3.2', subNavUrl: '#subNav3.2'}]},
+    {title: "Link Four",  url: "#four",  hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 4.1', subNavUrl: '#subNav4.1'}, {subNavTitle: 'Subnav 4.2', subNavUrl: '#subNav4.2'}]},
+    {title: "Link Five",  url: "#five",  hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav 5.1', subNavUrl: '#subNav5.1'}, {subNavTitle: 'Subnav 5.2', subNavUrl: '#subNav5.2'}]}
   ]
 }
 
