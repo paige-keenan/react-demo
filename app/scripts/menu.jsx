@@ -10,10 +10,10 @@ import Content from './content';
 const nav_data = { 
   links: [
     {title: "Link One", url: "#one", hasSubMenu: true, subNavLinks: [{subNavTitle: 'Subnav One', subNavUrl: '#subNavOne'}, {subNavTitle: 'Subnav Two', subNavUrl: '#subNavTwo'}]},
-    {title: "Link Two", url: "#two", hasSubMenu: false},
-    {title: "Link Three", url: "#three", hasSubMenu: false},
-    {title: "Link Four", url: "#four", hasSubMenu: false},
-    {title: "Link Five", url: "#five", hasSubMenu: false}
+    {title: "Link Two", url: "#two", hasSubMenu: false, subNavLinks: []},
+    {title: "Link Three", url: "#three", hasSubMenu: false, subNavLinks: []},
+    {title: "Link Four", url: "#four", hasSubMenu: false, subNavLinks: []},
+    {title: "Link Five", url: "#five", hasSubMenu: false, subNavLinks: []}
   ]
 }
 
