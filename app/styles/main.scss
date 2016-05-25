@@ -18,11 +18,11 @@
 }
 
 $body-color: #F1E8DB;
-$nav-background: #D0E3EF;
+$nav-background: #263742;
 $button-color: #1059DE;
 $primary-color: #fff;
-$secondary-color: #002465;
-$accent-color: #C1D8E6;
+$secondary-color: #C1C0C0;
+$accent-color: #364C5A;
 
 body {
 	background: $body-color;
@@ -113,20 +113,54 @@ header {
 		}	
 
 		li {
-			border-bottom: 1px solid $accent-color;
-
+			max-height: 62px;
+			overflow: hidden;
 			@media screen and (min-width: 768px) {
 				display: inline-block;
 				border: 0;
-			}			
+			}
+
+			// Has Sub Nav
+			&[data-has-sub-nav=true] {
+				a {
+					position: relative;
+
+					&:after	{
+						content: '';
+						position: absolute;
+						width: 20px;
+						height: 22px;
+						right: 30px;
+						top: 50%;
+    					transform: translateY(-15px);
+						background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23C1C0C0%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A);
+					}
+				}
+
+				// Sub Nav Styles
+				> ul li a {
+					background: #ccc;
+
+					&:after {
+						background-image: none;	
+						z-index: -1;
+					}
+				}				
+			}
+			// No Sub Nav
+			&[data-has-sub-nav=false] a {
+				
+			}								
 
 			a {
-				padding: 20px 0;
+				padding: 20px 30px;
 				display: block;
 				text-decoration: none;
 				color: $secondary-color;
 				font-size: 20px;
 				position: relative;
+				border-bottom: 1px solid $accent-color;
+				text-align: left;
 				@include Secondary-Font;
 				transition: .15s ease-out;
 
@@ -137,11 +171,11 @@ header {
     				margin-top: 10px;
 				}
 
-				&:hover {
-					background: $accent-color;
-					transition: .15s ease-in;
-				}
-			}
+				// &:hover {
+				// 	background: $accent-color;
+				// 	transition: .15s ease-in;
+				// }
+			}	
 		}
 	}
 }
