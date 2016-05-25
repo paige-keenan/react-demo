@@ -22,8 +22,7 @@ export default class Menu extends React.Component {
   // Set Inital State and Properties here
   constructor(props) {
     super(props);
-    this.state = {show_menu: false};
-    this.handle_click = this.handle_click.bind(this);
+    this.state = {show_menu: false, show_sub_menu: false};
   } 
 
   // Toggle Menu Function
@@ -36,6 +35,20 @@ export default class Menu extends React.Component {
     this.toggle_menu(this);
   }  
 
+  sub_nav_click(event) {
+    if(this.state.show_sub_menu) {
+      console.log('hide');
+      this.setState({show_sub_menu: false});
+      event.target.className = 'hide'
+    } else {
+      console.log('show');
+      this.setState({show_sub_menu: true}); 
+      event.target.className = 'show'
+    }
+    // event.target.className = 'active';
+  }
+
+
   // Menu Renderer
   render() {
     return (
@@ -45,7 +58,9 @@ export default class Menu extends React.Component {
           currentState={this.state.show_menu} />
         <Nav 
           data={nav_data}
-          currentState={this.state.show_menu} />        
+          currentState={this.state.show_menu} 
+          subMenuState={this.state.show_sub_menu}
+          clickSubNav={this.sub_nav_click.bind(this)}/>        
         <Content />  
       </header>
     );

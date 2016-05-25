@@ -6,7 +6,7 @@ import React from 'react';
 export default class Nav extends React.Component {
 
   // Render Links
-  render_nav_list_item(links) {
+  render_nav_list_item(links, subMenuClick, subMenuState) {
     return links.map(function(link_item, i) {
       var Sub_Nav = undefined;
       var sub_links = undefined;
@@ -26,15 +26,22 @@ export default class Nav extends React.Component {
       return (
         <li 
           key={i}
-          data-has-sub-nav={link_item.hasSubMenu ? true : false}>
-          <a href={link_item.url}>
+          data-has-sub-nav={link_item.hasSubMenu ? true : false}
+          onClick={subMenuClick}>
+          <a 
+            href={link_item.url}>
             {link_item.title}
           </a>
           {Sub_Nav}
         </li> 
-      );     
+      );   
+
+          
     });
   }  
+
+       
+
 
   // Navigation Renderer
   render() {
@@ -42,7 +49,7 @@ export default class Nav extends React.Component {
       <nav
         data-menu-state={this.props.currentState ? 'isOpen' : 'isClosed'}>
         <ul>
-          {this.render_nav_list_item(this.props.data.links)}
+          {this.render_nav_list_item(this.props.data.links, this.props.clickSubNav, this.props.subMenuState)}
         </ul>
       </nav> 
     );
