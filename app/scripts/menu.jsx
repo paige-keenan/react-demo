@@ -41,7 +41,8 @@ export default class Menu extends React.Component {
           clickEvent={this.handle_click.bind(this)}
           currentState={this.state.show_menu} />
         <Nav 
-          data={nav_data}/>        
+          data={nav_data}
+          currentState={this.state.show_menu}/>        
         <Content />  
       </header>
     );
