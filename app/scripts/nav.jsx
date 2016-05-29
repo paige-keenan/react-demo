@@ -44,6 +44,7 @@ export default class Link_Item extends React.Component {
 
     return(  
       <li
+        data-has-sub-nav={link.hasSubMenu}
         data-is-active={active_state}>
         <a
           onClick={this.toggle} 
