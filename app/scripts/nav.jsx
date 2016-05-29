@@ -76,9 +76,9 @@ export default class Nav extends React.Component {
   // Nav Renderer
   render() {
     return(
-      <nav>
+      <nav 
+        data-menu-state={this.props.currentState ? 'isOpen' : 'isClosed'}>
         <ul>
-          // Loop through all data and return link info in this `ul`
           {Object.keys(this.state.linkInfo).map(this.render_link_info)} 
         </ul>
       </nav>
