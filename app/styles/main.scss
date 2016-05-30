@@ -20,6 +20,7 @@ $body-color: #F1E8DB;
 $nav-background: #263742;
 $sub-nav-background: #304552;
 $button-color: rgba(208, 227, 239, 1);
+$button-hover-color: #B3D6EC;
 $primary-color: #fff;
 $secondary-color: #C1C0C0;
 $accent-color: #364C5A;
@@ -34,12 +35,23 @@ body {
 header {
 	position: relative;
 	width: 100%;
+	height: 100%;
 	min-height: 100vh;
 
 	.content {
 		position: absolute;
 		top: 0;
 		padding: 0 5%;
+
+		h1 {
+			font-size: 30px;
+			color: $nav-background;
+		}
+
+		p {
+			color: $nav-background;
+			margin: 30px 0;
+		}
 	}
 
 	h1 {
@@ -89,7 +101,13 @@ header {
 		z-index: 2;
 		font-size: 20px;
 		color: $nav-background;
+		transition: .3s ease-out;
 		@include Main-Font;
+
+		&:hover {
+			background: $button-hover-color;
+			transition: .15s ease-in;
+		}
 
 		@media screen and (min-width: 768px) {
 			display: none;
@@ -107,7 +125,8 @@ header {
 
 	nav {
 		min-height: 100vh;
-		height: 100%;
+		max-height: 100vh;
+		overflow: scroll;
 		width: 100%;
 		background: $nav-background;
 		position: absolute;
@@ -120,6 +139,7 @@ header {
 			min-height: 0;
 			background: rgba(208, 227, 239, 0.55);
 			transform: translateY(0);
+			overflow: visible;
 
 			&:hover {
 				background: rgba(208, 227, 239, 1);
@@ -151,7 +171,18 @@ header {
 			width: initial;
 			height: initial;
 			margin: 20px 0;
-			padding: 5px 20px;
+			padding: 10px 70px 10px 20px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				width: 20px;
+				height: 30px;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-15px) rotate(270deg) scale(.8);
+				background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23263742%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A);
+			}
 		}
 
 		h2 {
@@ -197,24 +228,20 @@ header {
 				&:hover {
 					& > main {
 						background: $nav-background;
-						max-height: 1000px;
 						transform: translateY(75px);
 						height: auto;
-						transition: max-height transform .15s ease-in;
 					}				
 				}
 
 				main {
-					max-height: 0;
 					background: $nav-background;
 					position: absolute;
 					top: 0;
-					z-index: 0;
+					z-index: 3;
 					overflow: hidden;
 					width: 100%;
 					left: 0;
-					transform: translateY(0);
-					transition: max-height transform .3s ease-out;
+					transform: translateY(-500px);
 
 					section {
 						@media screen and (min-width: 768px) {
@@ -258,6 +285,7 @@ header {
 					aside {
 						justify-content: flex-start;
 						align-items: flex-start;
+						margin-left: 50px;
 					}
 
 					figcaption {
@@ -275,6 +303,13 @@ header {
 					}
 				}				
 
+			}
+
+			// Does NOT Have Sub Nav
+			&[data-has-sub-nav=false] main {
+				@media screen and (min-width: 768px) {
+					height: 0;
+				}
 			}
 
 			// Has Sub Nav
@@ -389,6 +424,7 @@ header {
 
 			a {
 				padding: 20px 30px;
+				background: $nav-background;
 				display: block;
 				text-decoration: none;
 				color: $secondary-color;
@@ -403,6 +439,7 @@ header {
 					padding: 22px;
     				margin-top: 10px;
     				border: 0;	
+    				background: rgba(208, 227, 239, 0.55);
 				}
 			}	
 		}
