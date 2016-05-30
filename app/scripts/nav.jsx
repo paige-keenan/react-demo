@@ -23,8 +23,9 @@ export default class Link_Item extends React.Component {
     const link = this.props.details;
     const active_state = this.state.active ? true : false;
     var sub_links = '';
-    var Sub_Nav = undefined;
+    var Sub_Nav = '';
     var Sub_Image = '';
+    var Sub_Summary = '';
 
     // Conditional to check if `hasSubMenu` is TRUE in data
     if (link.hasSubMenu) {
@@ -47,6 +48,7 @@ export default class Link_Item extends React.Component {
       Sub_Nav = <ul>{sub_links}</ul>
     }
 
+    // Figure is present
     if (link.hasImage) {
       Sub_Image = <figure>
                     <img src={link.imageSrc} alt={link.imageAlt}/>
@@ -54,6 +56,17 @@ export default class Link_Item extends React.Component {
                       {link.imageAlt}
                     </figcaption>
                   </figure>
+    }
+
+    // Paragraph is present
+    if (link.hasSummary) {
+      Sub_Summary = <aside>
+                      <h3>{link.summaryTitle}</h3>
+                      <p>{link.summaryParagraph}</p>
+                      <button>
+                        {link.linkText}
+                      </button>
+                    </aside>
     }
 
     return(  
@@ -69,6 +82,7 @@ export default class Link_Item extends React.Component {
             <section>
               {Sub_Nav}  
               {Sub_Image}
+              {Sub_Summary}
             </section>  
           </main>  
       </li>
