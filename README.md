@@ -6,6 +6,7 @@ This is a Navigation module built using `Webpack`, `Babel`, and `ES6` within [Re
 * [Webpack](https://webpack.github.io/)
 * [Babel](https://babeljs.io/)
 * [ECMAScript 6](http://es6-features.org/#Constants)
+* [SASS](http://sass-lang.com/)
 
 ### To View Demo Online:
 See it here: [http://paigeinteractive.com/project/react-menu/index.html](http://paigeinteractive.com/project/react-menu/index.html)
