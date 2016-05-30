@@ -97,7 +97,11 @@
 	// =============================
 
 	var nav_data = {
-	  links: [{ title: "Link One", url: "#one" }, { title: "Link Two", url: "#two" }, { title: "Link Three", url: "#three" }, { title: "Link Four", url: "#four" }, { title: "Link Five", url: "#five" }]
+	  link1: { title: "Neque porro", url: "#one", hasSubMenu: true, subNavLinks: [{ subNavTitle: 'Neque porro', subNavUrl: '#subNav1.1', subNavSubText: 'Lorem ipsum dees corno as ifta' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav1.2' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav1.3', subNavSubText: 'Lorem ipsum dees corno as ifta' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav1.4', subNavSubText: 'Lorem ipsum dees corno as ifta' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav1.5', subNavSubText: 'Lorem ipsum dees corno as ifta' }], hasImage: true, imageSrc: 'https://images.unsplash.com/photo-1463595373836-6e0b0a8ee322?format=auto&auto=compress&dpr=2&crop=entropy&fit=crop&w=1199&h=799&q=80', imageAlt: 'Lorem ipsum alt tag' },
+	  link2: { title: "Dolor sit", url: "#two", hasSubMenu: false, subNavLinks: [] },
+	  link3: { title: "Neque porro", url: "#three", hasSubMenu: true, subNavLinks: [{ subNavTitle: 'Neque porro', subNavUrl: '#subNav3.1' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav3.2' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav3.3' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav3.4' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav3.5' }, { subNavTitle: 'Neque porro', subNavUrl: '#subNav3.6' }] },
+	  link4: { title: "Adipisci velit", url: "#four", hasSubMenu: true, subNavLinks: [{ subNavTitle: 'Adipisci velit', subNavUrl: '#subNav4.1', subNavSubText: 'Lorem ipsum dees corno as ifta' }, { subNavTitle: 'Adipisci velit', subNavUrl: '#subNav4.2' }], hasSummary: true, summaryTitle: 'Neque porro quisquam', summaryParagraph: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", linkText: 'See More' },
+	  link5: { title: "Dolorem ipsum", url: "#five", hasSubMenu: false, subNavLinks: [] }
 	};
 
 	var Menu = function (_React$Component) {
@@ -111,7 +115,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).call(this, props));
 
 	    _this.state = { show_menu: false };
-	    _this.handle_click = _this.handle_click.bind(_this);
 	    return _this;
 	  }
 
@@ -20272,38 +20275,172 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Navigation Component
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Nav Component
 	// =============================
 
-	var Nav = function (_React$Component) {
-	  _inherits(Nav, _React$Component);
+	var Link_Item = function (_React$Component) {
+	  _inherits(Link_Item, _React$Component);
 
-	  function Nav() {
-	    _classCallCheck(this, Nav);
+	  function Link_Item(props) {
+	    _classCallCheck(this, Link_Item);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Link_Item).call(this, props));
+
+	    _this.state = {
+	      active: false
+	    };
+	    _this.toggle = _this.toggle.bind(_this);
+	    return _this;
 	  }
 
-	  _createClass(Nav, [{
-	    key: 'render_nav_list_item',
-
-
-	    // Render Links
-	    value: function render_nav_list_item(links) {
-	      return links.map(function (link_item, i) {
-	        return _react2.default.createElement(
-	          'li',
-	          { key: i },
-	          _react2.default.createElement(
-	            'a',
-	            { href: link_item.url },
-	            link_item.title
-	          )
-	        );
+	  _createClass(Link_Item, [{
+	    key: 'toggle',
+	    value: function toggle() {
+	      this.setState({
+	        active: !this.state.active
 	      });
 	    }
 
-	    // Navigation Renderer
+	    // Nav List Item Renderer
+
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var link = this.props.details;
+	      var active_state = this.state.active ? true : false;
+	      var sub_links = '';
+	      var Sub_Nav = '';
+	      var Sub_Image = '';
+	      var Sub_Summary = '';
+
+	      // Conditional to check if `hasSubMenu` is TRUE in data
+	      if (link.hasSubMenu) {
+	        sub_links = link.subNavLinks.map(function (sub_nav_link, i) {
+	          var Sub_Text = '';
+	          if (sub_nav_link.subNavSubText) {
+	            Sub_Text = _react2.default.createElement(
+	              'p',
+	              null,
+	              sub_nav_link.subNavSubText
+	            );
+	          }
+	          return _react2.default.createElement(
+	            'li',
+	            {
+	              key: i },
+	            _react2.default.createElement(
+	              'a',
+	              { href: sub_nav_link.subNavUrl },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                sub_nav_link.subNavTitle
+	              ),
+	              Sub_Text
+	            )
+	          );
+	        });
+	        // Append the `sub_links` into this `<ul>` and then append to return below
+	        Sub_Nav = _react2.default.createElement(
+	          'ul',
+	          null,
+	          sub_links
+	        );
+	      }
+
+	      // Figure is present
+	      if (link.hasImage) {
+	        Sub_Image = _react2.default.createElement(
+	          'figure',
+	          null,
+	          _react2.default.createElement('img', { src: link.imageSrc, alt: link.imageAlt }),
+	          _react2.default.createElement(
+	            'figcaption',
+	            null,
+	            link.imageAlt
+	          )
+	        );
+	      }
+
+	      // Paragraph is present
+	      if (link.hasSummary) {
+	        Sub_Summary = _react2.default.createElement(
+	          'aside',
+	          null,
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            link.summaryTitle
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            link.summaryParagraph
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            link.linkText
+	          )
+	        );
+	      }
+
+	      return _react2.default.createElement(
+	        'li',
+	        {
+	          'data-has-sub-nav': link.hasSubMenu,
+	          'data-is-active': active_state },
+	        _react2.default.createElement(
+	          'a',
+	          {
+	            onClick: this.toggle,
+	            href: link.url },
+	          link.title
+	        ),
+	        _react2.default.createElement(
+	          'main',
+	          null,
+	          _react2.default.createElement(
+	            'section',
+	            null,
+	            Sub_Nav,
+	            Sub_Image,
+	            Sub_Summary
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Link_Item;
+	}(_react2.default.Component);
+
+	exports.default = Link_Item;
+
+	var Nav = function (_React$Component2) {
+	  _inherits(Nav, _React$Component2);
+
+	  function Nav(props) {
+	    _classCallCheck(this, Nav);
+
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
+
+	    _this2.state = {
+	      linkInfo: _this2.props.data
+	    };
+	    _this2.render_link_info = _this2.render_link_info.bind(_this2);
+	    return _this2;
+	  }
+
+	  _createClass(Nav, [{
+	    key: 'render_link_info',
+	    value: function render_link_info(key) {
+	      return _react2.default.createElement(Link_Item, {
+	        key: key,
+	        details: this.state.linkInfo[key] });
+	    }
+
+	    // Nav Renderer
 
 	  }, {
 	    key: 'render',
@@ -20315,7 +20452,7 @@
 	        _react2.default.createElement(
 	          'ul',
 	          null,
-	          this.render_nav_list_item(this.props.data.links)
+	          Object.keys(this.state.linkInfo).map(this.render_link_info)
 	        )
 	      );
 	    }
@@ -20423,11 +20560,12 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'section',
-	        null,
+	        {
+	          className: 'content' },
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'This is a responsive React menu'
+	          'This is a Responsive React Menu Demo'
 	        ),
 	        _react2.default.createElement(
 	          'p',
@@ -20478,7 +20616,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background: #F1E8DB;\n  box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  margin: 0 auto;\n  padding: 0; }\n\nheader {\n  position: relative;\n  width: 100%;\n  height: 100vh; }\n  header section {\n    position: absolute;\n    top: 0;\n    padding: 0 5%; }\n  header h1 {\n    margin: 15vh 0 0;\n    font-size: 20px;\n    text-align: center;\n    font-family: 'Oswald', sans-serif;\n    text-transform: uppercase;\n    letter-spacing: 2px; }\n  header p {\n    line-height: 30px;\n    text-indent: 30px;\n    font-family: 'Inconsolata', sans-serif;\n    letter-spacing: 1px; }\n  header button {\n    border: 0;\n    width: 100%;\n    background: #1059DE;\n    height: 10vh;\n    position: absolute;\n    top: 0;\n    z-index: 2;\n    font-size: 20px;\n    color: #fff;\n    font-family: 'Oswald', sans-serif;\n    text-transform: uppercase;\n    letter-spacing: 2px; }\n    @media screen and (min-width: 768px) {\n      header button {\n        display: none; } }\n    header button[data-menu-state='isOpen'] {\n      transform: translateY(90vh);\n      transition: .3s ease-in; }\n    header button[data-menu-state='isClosed'] {\n      transition: .15s ease-out; }\n  header nav {\n    height: 100vh;\n    width: 100%;\n    background: #D0E3EF;\n    position: absolute;\n    top: 0;\n    z-index: 1;\n    transform: translateY(-100%); }\n    @media screen and (min-width: 768px) {\n      header nav {\n        height: auto;\n        background: rgba(208, 227, 239, 0.55);\n        transform: translateY(0);\n        border-bottom: 1px solid #C1D8E6; } }\n    header nav[data-menu-state='isOpen'] {\n      transform: translateY(0);\n      transition: .3s ease-in; }\n    header nav[data-menu-state='isClosed'] {\n      transition: .15s ease-out; }\n    header nav ul {\n      list-style: none;\n      text-align: center;\n      margin: 0 auto;\n      padding: 0; }\n    header nav li {\n      border-bottom: 1px solid #C1D8E6; }\n      @media screen and (min-width: 768px) {\n        header nav li {\n          display: inline-block;\n          border: 0; } }\n      header nav li a {\n        padding: 20px 0;\n        display: block;\n        text-decoration: none;\n        color: #002465;\n        font-size: 20px;\n        position: relative;\n        font-family: 'Inconsolata', sans-serif;\n        letter-spacing: 1px;\n        transition: .15s ease-out; }\n        @media screen and (min-width: 768px) {\n          header nav li a {\n            padding: 20px;\n            border-top-right-radius: 20px;\n            border-top-left-radius: 20px;\n            margin-top: 10px; } }\n        header nav li a:hover {\n          background: #C1D8E6;\n          transition: .15s ease-in; }\n", ""]);
+	exports.push([module.id, "body {\n  background: #F1E8DB;\n  box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  margin: 0 auto;\n  padding: 0; }\n\nheader {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 100vh; }\n  header .content {\n    position: absolute;\n    top: 0;\n    padding: 0 5%; }\n    header .content h1 {\n      font-size: 30px;\n      color: #263742; }\n    header .content p {\n      color: #263742;\n      margin: 30px 0; }\n  header h1 {\n    margin: 15vh 0 0;\n    font-size: 20px;\n    text-align: center;\n    font-family: 'Yanone Kaffeesatz', sans-serif;\n    letter-spacing: 2px; }\n  header h2 {\n    font-size: 15px;\n    color: #C1C0C0;\n    margin: 0 auto;\n    padding: 0;\n    font-family: 'Raleway', sans-serif;\n    letter-spacing: 2px; }\n    @media screen and (min-width: 768px) {\n      header h2 {\n        font-family: 'Yanone Kaffeesatz', sans-serif;\n        letter-spacing: 2px;\n        font-size: 20px;\n        text-indent: 30px; } }\n  header h3 {\n    font-size: 20px;\n    color: #fff;\n    text-align: left;\n    width: 100%;\n    font-family: 'Yanone Kaffeesatz', sans-serif;\n    letter-spacing: 2px; }\n  header p {\n    color: #C1C0C0;\n    line-height: 30px;\n    text-indent: 30px;\n    margin: 0 auto;\n    padding: 0;\n    font-family: 'Raleway', sans-serif;\n    letter-spacing: 2px; }\n  header button {\n    border: 0;\n    width: 100%;\n    background: #d0e3ef;\n    height: 10vh;\n    cursor: pointer;\n    position: absolute;\n    top: 0;\n    z-index: 2;\n    font-size: 20px;\n    color: #263742;\n    transition: .3s ease-out;\n    font-family: 'Yanone Kaffeesatz', sans-serif;\n    letter-spacing: 2px; }\n    header button:hover {\n      background: #B3D6EC;\n      transition: .15s ease-in; }\n    @media screen and (min-width: 768px) {\n      header button {\n        display: none; } }\n    header button[data-menu-state='isOpen'] {\n      -webkit-transform: translateY(90vh);\n      transform: translateY(90vh);\n      transition: .3s ease-in; }\n    header button[data-menu-state='isClosed'] {\n      transition: .15s ease-out; }\n  header nav {\n    min-height: 100vh;\n    max-height: 100vh;\n    overflow: scroll;\n    width: 100%;\n    background: #263742;\n    position: absolute;\n    top: 0;\n    z-index: 1;\n    -webkit-transform: translateY(-100%);\n    transform: translateY(-100%); }\n    @media screen and (min-width: 768px) {\n      header nav {\n        height: auto;\n        min-height: 0;\n        background: rgba(208, 227, 239, 0.55);\n        -webkit-transform: translateY(0);\n        transform: translateY(0);\n        overflow: visible; }\n        header nav:hover {\n          background: #d0e3ef; }\n          header nav:hover a {\n            color: #fff; } }\n    header nav[data-menu-state='isOpen'] {\n      -webkit-transform: translateY(0);\n      transform: translateY(0);\n      transition: .3s ease-in; }\n    header nav[data-menu-state='isClosed'] {\n      transition: .15s ease-out; }\n    header nav ul {\n      list-style: none;\n      text-align: center;\n      margin: 0 auto;\n      padding: 0; }\n    header nav button {\n      display: inline-block;\n      position: relative;\n      width: initial;\n      height: initial;\n      margin: 20px 0;\n      padding: 10px 70px 10px 20px; }\n      header nav button:after {\n        content: '';\n        position: absolute;\n        width: 20px;\n        height: 30px;\n        right: 10px;\n        top: 50%;\n        -webkit-transform: translateY(-15px) rotate(270deg) scale(0.8);\n        transform: translateY(-15px) rotate(270deg) scale(0.8);\n        background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23263742%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A); }\n    @media screen and (min-width: 768px) {\n      header nav h2 {\n        padding: 0 0 0 20px; }\n        header nav h2 + p {\n          padding: 0 0 0 20px;\n          text-indent: 30px; } }\n    header nav p {\n      display: none; }\n      @media screen and (min-width: 768px) {\n        header nav p {\n          display: inline-block;\n          text-indent: 0;\n          font-size: 15px;\n          width: 100%;\n          text-align: left; } }\n    header nav li {\n      max-height: 65px;\n      overflow: hidden;\n      transition: .15s ease-out; }\n      header nav li figure,\n      header nav li aside {\n        display: none; }\n      @media screen and (min-width: 768px) {\n        header nav li {\n          display: inline-block;\n          border: 0;\n          max-height: 1000px;\n          max-width: 900px;\n          margin: 0 auto; }\n          header nav li:hover > main {\n            background: #263742;\n            -webkit-transform: translateY(75px);\n            transform: translateY(75px);\n            height: auto; }\n          header nav li main {\n            background: #263742;\n            position: absolute;\n            top: 0;\n            z-index: 3;\n            overflow: hidden;\n            width: 100%;\n            left: 0;\n            -webkit-transform: translateY(-800px);\n            transform: translateY(-500px); } }\n    @media screen and (min-width: 768px) and (min-width: 768px) {\n      header nav li main section {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-justify-content: space-between;\n        justify-content: space-between;\n        max-width: 900px;\n        margin: 20px auto; }\n        header nav li main section:only-child ul {\n          width: 100%; } }\n      @media screen and (min-width: 768px) {\n            header nav li main li {\n              display: block; }\n            header nav li main a {\n              margin: 0; } }\n    @media screen and (min-width: 768px) and (min-width: 768px) {\n      header nav li main ul, header nav li main figure, header nav li main aside {\n        width: 100%;\n        display: inline-block;\n        overflow: hidden; } }\n      @media screen and (min-width: 768px) {\n            header nav li main figure, header nav li main aside {\n              display: -webkit-flex;\n              display: flex;\n              -webkit-justify-content: center;\n              justify-content: center;\n              -webkit-align-items: center;\n              align-items: center;\n              width: 100%;\n              padding-left: 50px;\n              -webkit-flex-direction: column;\n              flex-direction: column;\n              border-left: 1px solid #C1C0C0; }\n            header nav li main aside {\n              -webkit-justify-content: flex-start;\n              justify-content: flex-start;\n              -webkit-align-items: flex-start;\n              align-items: flex-start;\n              margin-left: 50px; }\n            header nav li main figcaption {\n              text-align: left;\n              width: 100%;\n              color: #C1C0C0;\n              font-size: 10px;\n              font-family: 'Raleway', sans-serif;\n              letter-spacing: 2px;\n              font-style: italic;\n              padding: 12px 0 0 0; }\n            header nav li main img {\n              width: 100%; } }\n      @media screen and (min-width: 768px) {\n        header nav li[data-has-sub-nav=false] main {\n          height: 0; } }\n      header nav li[data-has-sub-nav=true] a {\n        position: relative;\n        z-index: 1; }\n        header nav li[data-has-sub-nav=true] a:after {\n          content: '';\n          position: absolute;\n          width: 20px;\n          height: 30px;\n          right: 30px;\n          top: 50%;\n          -webkit-transform: translateY(-15px);\n          transform: translateY(-15px);\n          transition: .3s ease-out;\n          background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23C1C0C0%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A); }\n          @media screen and (min-width: 768px) {\n            header nav li[data-has-sub-nav=true] a:after {\n              background-image: none;\n              transition: 0s; } }\n      @media screen and (min-width: 768px) {\n        header nav li[data-has-sub-nav=true]:hover a:after {\n          bottom: 0;\n          top: auto;\n          -webkit-transform: translateY(0);\n          transform: translateY(0);\n          width: 0;\n          right: 0;\n          left: 0;\n          height: 0;\n          margin: 0 auto;\n          border-left: 15px solid transparent;\n          border-right: 15px solid transparent;\n          border-bottom: 15px solid #263742; } }\n      header nav li[data-has-sub-nav=true] main ul li a {\n        background: #304552;\n        text-indent: 30px;\n        margin: 0;\n        position: relative; }\n        @media screen and (min-width: 768px) {\n          header nav li[data-has-sub-nav=true] main ul li a {\n            text-indent: 0; } }\n        header nav li[data-has-sub-nav=true] main ul li a:after {\n          background-image: none; }\n        @media screen and (min-width: 768px) {\n          header nav li[data-has-sub-nav=true] main ul li a {\n            background: #263742;\n            padding: 15px 0; }\n            header nav li[data-has-sub-nav=true] main ul li a:hover {\n              background: #304552; }\n              header nav li[data-has-sub-nav=true] main ul li a:hover h2, header nav li[data-has-sub-nav=true] main ul li a:hover p {\n                color: #fff; }\n              header nav li[data-has-sub-nav=true] main ul li a:hover h2:before {\n                border-left: 9px solid #fff; } }\n      @media screen and (min-width: 768px) {\n        header nav li[data-has-sub-nav=true] main ul li h2 {\n          position: relative; }\n          header nav li[data-has-sub-nav=true] main ul li h2:before {\n            content: '';\n            position: absolute;\n            bottom: 0;\n            top: 50%;\n            -webkit-transform: translateY(-6px);\n            transform: translateY(-6px);\n            width: 0;\n            left: 25px;\n            height: 0;\n            margin: 0;\n            border-left: 9px solid #C1C0C0;\n            border-top: 6px solid transparent;\n            border-bottom: 6px solid transparent; }\n        header nav li[data-has-sub-nav=true]:hover ul li a:after {\n          display: none; } }\n      header nav li[data-is-active=true] {\n        max-height: 1000px;\n        transition: .3s ease-in; }\n        header nav li[data-is-active=true] a:after {\n          -webkit-transform: translateY(-15px) rotate(180deg);\n          transform: translateY(-15px) rotate(180deg);\n          transition: .15s ease-in; }\n      header nav li a {\n        padding: 20px 30px;\n        background: #263742;\n        display: block;\n        text-decoration: none;\n        color: #C1C0C0;\n        font-size: 20px;\n        position: relative;\n        border-bottom: 1px solid #364C5A;\n        text-align: left;\n        font-family: 'Raleway', sans-serif;\n        letter-spacing: 2px;\n        transition: .15s ease-out; }\n        @media screen and (min-width: 768px) {\n          header nav li a {\n            padding: 22px;\n            margin-top: 10px;\n            border: 0;\n            background: rgba(208, 227, 239, 0.55); } }\n", ""]);
 
 	// exports
 
