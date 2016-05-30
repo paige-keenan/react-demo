@@ -8,7 +8,7 @@ import Toggle_Button from './toggle_button';
 import Content       from './content';
 
 const nav_data = { 
-  link1: {title: "Link One",   url: "#one",   hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 1.1', subNavUrl: '#subNav1.1'}, {subNavTitle: 'Subnav 1.2', subNavUrl: '#subNav1.2'}]},
+  link1: {title: "Link One",   url: "#one",   hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 1.1', subNavUrl: '#subNav1.1'}, {subNavTitle: 'Subnav 1.2', subNavUrl: '#subNav1.2'}, {subNavTitle: 'Subnav 1.3', subNavUrl: '#subNav1.3'}, {subNavTitle: 'Subnav 1.4', subNavUrl: '#subNav1.4'}, {subNavTitle: 'Subnav 1.5', subNavUrl: '#subNav1.5'}]},
   link2: {title: "Link Two",   url: "#two",   hasSubMenu: false, subNavLinks: []},
   link3: {title: "Link Three", url: "#three", hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 3.1', subNavUrl: '#subNav3.1'}, {subNavTitle: 'Subnav 3.2', subNavUrl: '#subNav3.2'}]},
   link4: {title: "Link Four",  url: "#four",  hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 4.1', subNavUrl: '#subNav4.1'}, {subNavTitle: 'Subnav 4.2', subNavUrl: '#subNav4.2'}]},
