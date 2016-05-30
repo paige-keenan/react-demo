@@ -1,7 +1,7 @@
 # React Navigation Menu
 This is a Navigation module built using `Webpack`, `Babel`, and `ES6` within [React](https://facebook.github.io/react/). All of the navigation content is pulled into its perspective place in the navigation via data. The demo is fully responsive and built in the latest version of React using a modular approach to creating the menu (aka its component based.)
 
-### Tech Stack
+### Tech Stack:
 * [React](https://facebook.github.io/react/)
 * [Webpack](https://webpack.github.io/)
 * [Babel](https://babeljs.io/)
