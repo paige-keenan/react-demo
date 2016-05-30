@@ -28,11 +28,16 @@ export default class Link_Item extends React.Component {
     // Conditional to check if `hasSubMenu` is TRUE in data
     if (link.hasSubMenu) {
       sub_links = link.subNavLinks.map(function(sub_nav_link, i) {
+        var Sub_Text = '';
+        if (sub_nav_link.subNavSubText) {
+          Sub_Text = <p>{sub_nav_link.subNavSubText}</p>
+        }
         return(
           <li 
             key={i}>
             <a href={sub_nav_link.subNavUrl}>
-              {sub_nav_link.subNavTitle}
+              <h2>{sub_nav_link.subNavTitle}</h2>
+              {Sub_Text}
             </a>
           </li>
         );  
@@ -50,7 +55,7 @@ export default class Link_Item extends React.Component {
           href={link.url}>
           {link.title}
         </a>
-        {Sub_Nav}
+          {Sub_Nav}  
       </li>
     );  
   }
