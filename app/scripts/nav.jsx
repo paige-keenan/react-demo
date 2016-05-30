@@ -14,8 +14,7 @@ export default class Link_Item extends React.Component {
 
   toggle() {
     this.setState({
-      active: !this.state.active,
-      className: true
+      active: !this.state.active
     });
   }
 

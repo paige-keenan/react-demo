@@ -94,7 +94,14 @@ header {
 			height: auto;
 			background: rgba(208, 227, 239, 0.55);
 			transform: translateY(0);
-			border-bottom: 1px solid $accent-color;
+
+			&:hover {
+				background: rgba(208, 227, 239, 1);
+
+				a {
+					color: $primary-color;
+				}
+			}
 		}
 
 		&[data-menu-state='isOpen'] {
@@ -115,41 +122,102 @@ header {
 		li {
 			max-height: 62px;
 			overflow: hidden;
+			transition: .15s ease-out;
 			@media screen and (min-width: 768px) {
 				display: inline-block;
 				border: 0;
+				max-height: 1000px;
+				// Sub Nav Tablet+ Styles
+				&:hover {
+					& > ul {
+						max-height: 1000px;
+						transform: translateY(75px);
+						transition: max-height transform .15s ease-in;
+					}				
+				}
+
+				> ul {
+					max-height: 0;
+					position: absolute;
+					top: 0;
+					z-index: 0;
+					overflow: hidden;
+					width: 100%;
+					left: 0;
+					transform: translateY(0);
+					transition: max-height transform .3s ease-out;
+
+					li {
+						display: block;
+					}
+
+					a {
+						margin: 0;
+					}
+				}				
+
 			}
 
 			// Has Sub Nav
 			&[data-has-sub-nav=true] {
 				a {
 					position: relative;
+					z-index: 1;
 
 					&:after	{
 						content: '';
 						position: absolute;
 						width: 20px;
-						height: 22px;
+						height: 30px;
 						right: 30px;
 						top: 50%;
     					transform: translateY(-15px);
+    					transition: .3s ease-out;
 						background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23C1C0C0%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A);
+
+						@media screen and (min-width: 768px) {
+							background-image: none;
+							transition: 0s;
+						}
 					}
 				}
 
+				&:hover a:after {
+					@media screen and (min-width: 768px) {
+						bottom: 0;
+					    background-image: none;
+					    top: auto;
+					    transform: translateY(0);
+					    width: 0;
+					    right: 0;
+					    left: 0;
+					    height: 0;
+					    margin: 0 auto;
+					    border-left: 15px solid transparent;
+					    border-right: 15px solid transparent;
+					    border-bottom: 10px solid #2D404C;							
+					}	
+				}				
+
 				// Sub Nav Styles
 				> ul li a {
-					background: #ccc;
+					background: #2D404C;
+    				text-indent: 30px;
 
-					&:after {
-						background-image: none;	
-						z-index: -1;
-					}
-				}				
+    				&:after {
+    					display: none;
+    				}
+				}			
 			}
-			// No Sub Nav
-			&[data-has-sub-nav=false] a {
-				
+			// Sub Nav is Active
+			&[data-is-active=true] {
+				max-height: 1000px;
+				transition: .3s ease-in;
+
+				a:after {
+					transform: translateY(-15px) rotate(180deg);
+					transition: .15s ease-in;
+				}
 			}								
 
 			a {
@@ -166,9 +234,8 @@ header {
 
 				@media screen and (min-width: 768px) {
 					padding: 20px;
-					border-top-right-radius: 20px;
-    				border-top-left-radius: 20px;
     				margin-top: 10px;
+    				border: 0;	
 				}
 
 				// &:hover {
