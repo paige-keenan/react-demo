@@ -8,11 +8,11 @@ import Toggle_Button from './toggle_button';
 import Content       from './content';
 
 const nav_data = { 
-  link1: {title: "Link One",   url: "#one",   hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 1.1', subNavUrl: '#subNav1.1'}, {subNavTitle: 'Subnav 1.2', subNavUrl: '#subNav1.2'}, {subNavTitle: 'Subnav 1.3', subNavUrl: '#subNav1.3'}, {subNavTitle: 'Subnav 1.4', subNavUrl: '#subNav1.4'}, {subNavTitle: 'Subnav 1.5', subNavUrl: '#subNav1.5'}]},
-  link2: {title: "Link Two",   url: "#two",   hasSubMenu: false, subNavLinks: []},
-  link3: {title: "Link Three", url: "#three", hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 3.1', subNavUrl: '#subNav3.1'}, {subNavTitle: 'Subnav 3.2', subNavUrl: '#subNav3.2'}]},
-  link4: {title: "Link Four",  url: "#four",  hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Subnav 4.1', subNavUrl: '#subNav4.1'}, {subNavTitle: 'Subnav 4.2', subNavUrl: '#subNav4.2'}]},
-  link5: {title: "Link Five",  url: "#five",  hasSubMenu: false, subNavLinks: []}
+  link1: {title: "Neque porro",   url: "#one",   hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Neque porro', subNavUrl: '#subNav1.1', subNavSubText: 'Lorem ipsum dees corno as ifta'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav1.2'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav1.3', subNavSubText: 'Lorem ipsum dees corno as ifta'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav1.4', subNavSubText: 'Lorem ipsum dees corno as ifta'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav1.5', subNavSubText: 'Lorem ipsum dees corno as ifta'}], hasImage: true, imageSrc: 'https://images.unsplash.com/photo-1463595373836-6e0b0a8ee322?format=auto&auto=compress&dpr=2&crop=entropy&fit=crop&w=1199&h=799&q=80', imageAlt: 'Lorem ipsum alt tag'},
+  link2: {title: "Dolor sit",   url: "#two",   hasSubMenu: false, subNavLinks: []},
+  link3: {title: "Neque porro", url: "#three", hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Neque porro', subNavUrl: '#subNav3.1'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav3.2'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav3.3'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav3.4'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav3.5'}, {subNavTitle: 'Neque porro', subNavUrl: '#subNav3.6'}]},
+  link4: {title: "Adipisci velit",  url: "#four",  hasSubMenu: true,  subNavLinks: [{subNavTitle: 'Adipisci velit', subNavUrl: '#subNav4.1'}, {subNavTitle: 'Adipisci velit', subNavUrl: '#subNav4.2'}], hasSummary: true, summaryTitle: 'Neque porro quisquam', summaryParagraph: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", linkText: 'See More'},
+  link5: {title: "Dolorem ipsum",  url: "#five",  hasSubMenu: false, subNavLinks: []}
 } 
 
 export default class Menu extends React.Component {
