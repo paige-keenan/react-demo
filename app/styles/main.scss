@@ -114,6 +114,7 @@ header {
 		}		
 
 		&[data-menu-state='isOpen'] {
+			-webkit-transform: translateY(90vh);
 			transform: translateY(90vh);
 			transition: .3s ease-in;
 		}
@@ -132,12 +133,14 @@ header {
 		position: absolute;
 		top: 0;
 		z-index: 1;
+		-webkit-transform: translateY(-100%);
 		transform: translateY(-100%);
 
 		@media screen and (min-width: 768px) {
 			height: auto;
 			min-height: 0;
 			background: rgba(208, 227, 239, 0.55);
+			-webkit-transform: translateY(0);
 			transform: translateY(0);
 			overflow: visible;
 
@@ -151,6 +154,7 @@ header {
 		}
 
 		&[data-menu-state='isOpen'] {
+			-webkit-transform: translateY(0);
 			transform: translateY(0);
 			transition: .3s ease-in;
 		}		
@@ -180,6 +184,7 @@ header {
 				height: 30px;
 				right: 10px;
 				top: 50%;
+				-webkit-transform: translateY(-15px) rotate(270deg) scale(.8);
 				transform: translateY(-15px) rotate(270deg) scale(.8);
 				background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23263742%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A);
 			}
@@ -228,6 +233,7 @@ header {
 				&:hover {
 					& > main {
 						background: $nav-background;
+						-webkit-transform: translateY(75px);
 						transform: translateY(75px);
 						height: auto;
 					}				
@@ -241,11 +247,14 @@ header {
 					overflow: hidden;
 					width: 100%;
 					left: 0;
+					-webkit-transform: translateY(-800px);
 					transform: translateY(-500px);
 
 					section {
 						@media screen and (min-width: 768px) {
+							display: -webkit-flex;
 							display: flex;
+							-webkit-justify-content: space-between;
 							justify-content: space-between;
 							max-width: 900px;
 							margin: 20px auto;
@@ -273,17 +282,23 @@ header {
 					}
 
 					figure, aside {
+						display: -webkit-flex;
 						display: flex;
+						-webkit-justify-content: center;
 						justify-content: center;
+						-webkit-align-items: center;
 						align-items: center;
 						width: 100%;
 						padding-left: 50px;
+						-webkit-flex-direction: column;
 						flex-direction: column;
 						border-left: 1px solid $secondary-color;
 					}
 
 					aside {
+						-webkit-justify-content: flex-start;
 						justify-content: flex-start;
+						-webkit-align-items: flex-start;
 						align-items: flex-start;
 						margin-left: 50px;
 					}
@@ -325,6 +340,7 @@ header {
 						height: 30px;
 						right: 30px;
 						top: 50%;
+						-webkit-transform: translateY(-15px);
     					transform: translateY(-15px);
     					transition: .3s ease-out;
 						background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20style%3D%27fill%3A%20%23C1C0C0%27%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2232%22%20viewBox%3D%220%200%2021%2032%22%3E%0A%3Cpath%20d%3D%22M19.196%2013.143q0%200.232-0.179%200.411l-8.321%208.321q-0.179%200.179-0.411%200.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179%200.411-0.179t0.411%200.179l7.018%207.018%207.018-7.018q0.179-0.179%200.411-0.179t0.411%200.179l0.893%200.893q0.179%200.179%200.179%200.411z%22%3E%3C/path%3E%0A%3C/svg%3E%0A);
@@ -340,6 +356,7 @@ header {
 					&:hover a:after {
 						bottom: 0;
 					    top: auto;
+					    -webkit-transform: translateY(0);
 					    transform: translateY(0);
 					    width: 0;
 					    right: 0;
@@ -394,6 +411,7 @@ header {
 						    position: absolute;
 						    bottom: 0;
 						    top: 50%;
+						    -webkit-transform: translateY(-6px);
 						    transform: translateY(-6px);
 						    width: 0;
 						    left: 25px;
@@ -417,6 +435,7 @@ header {
 				transition: .3s ease-in;
 
 				a:after {
+					-webkit-transform: translateY(-15px) rotate(180deg);
 					transform: translateY(-15px) rotate(180deg);
 					transition: .15s ease-in;
 				}
